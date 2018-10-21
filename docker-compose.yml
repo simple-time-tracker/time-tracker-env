@@ -1,0 +1,16 @@
+version: "3"
+services:
+  time-tracker-api:
+    image: dovydasvenckus/time-tracker-api
+    environment:
+      ACTIVE_PROFILES: "dev"
+
+  time-tracker-web:
+    image: dovydasvenckus/time-tracker-web
+  
+  time-tracker-reverse-proxy:
+    image: nginx:1.15-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - $PWD/nginx.conf:/etc/nginx/nginx.conf:ro
