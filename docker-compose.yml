@@ -3,8 +3,8 @@ services:
   time-tracker-api:
     image: dovydasvenckus/time-tracker-api
     restart: always
-    environment:
-      ACTIVE_PROFILES: "dev"
+    env_file:
+      - time-tracker-api.env
 
   time-tracker-web:
     image: dovydasvenckus/time-tracker-web
