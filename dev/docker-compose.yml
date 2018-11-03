@@ -1,0 +1,28 @@
+version: "3"
+services:
+  time-tracker-db:
+    image: postgres
+    environment: 
+      - POSTGRES_USER=time_tracker
+      - POSTGRES_PASSWORD=super-secret-pass
+
+  time-tracker-api:
+    image: dovydasvenckus/time-tracker-api
+    environment:
+      - ACTIVE_PROFILES=prod
+      - DB_URL=jdbc:postgresql://time-tracker-db/time_tracker
+      - DB_USERNAME=time_tracker
+      - DB_PASSWORD=super-secret-pass
+      - DB_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - CORS_ALLOW=
+
+
+  time-tracker-web:
+    image: dovydasvenckus/time-tracker-web
+  
+  time-tracker-reverse-proxy:
+    image: nginx:1.15-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - $PWD/../nginx.conf:/etc/nginx/nginx.conf:ro
