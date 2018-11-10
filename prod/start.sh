@@ -1,2 +1,2 @@
 #!/bin/sh
-docker-compose -p time-tracker up -d
+docker stack deploy -c docker-compose.yml time-tracker

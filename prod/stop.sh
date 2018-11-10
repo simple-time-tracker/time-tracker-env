@@ -1,2 +1,2 @@
 #!/bin/sh
-docker-compose -p time-tracker down
+docker stack rm time-tracker
