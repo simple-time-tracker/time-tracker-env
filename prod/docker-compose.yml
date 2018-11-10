@@ -2,18 +2,27 @@ version: "3"
 services:
   time-tracker-api:
     image: dovydasvenckus/time-tracker-api
-    restart: always
     env_file:
       - $PWD/../../time-tracker-api.env
+    deploy:
+      resources:
+        limits:
+          memory: 96M
 
   time-tracker-web:
     image: dovydasvenckus/time-tracker-web
-    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 32M
   
   time-tracker-reverse-proxy:
     image: nginx:1.15-alpine
-    restart: always
     ports:
       - "80:80"
     volumes:
       - $PWD/../nginx.conf:/etc/nginx/nginx.conf:ro
+    deploy:
+      resources:
+        limits:
+          memory: 32M
