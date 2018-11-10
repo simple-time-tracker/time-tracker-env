@@ -7,7 +7,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 96M
+          memory: 128M
 
   time-tracker-web:
     image: dovydasvenckus/time-tracker-web
