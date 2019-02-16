@@ -8,6 +8,10 @@ services:
       resources:
         limits:
           memory: 198M
+    restart_policy:
+      condition: on-failure
+      delay: 60s
+      max_attempts: 3
 
   time-tracker-web:
     image: dovydasvenckus/time-tracker-web
