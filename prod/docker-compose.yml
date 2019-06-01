@@ -1,5 +1,16 @@
 version: "3"
 services:
+  time-tracker-db:
+    image: postgres:11-alpine
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - $PWD/../../time-tracker-db.env
+    deploy:
+      resources:
+         limits:
+           memory: 32M
+
   time-tracker-api:
     image: dovydasvenckus/time-tracker-api
     env_file:
@@ -8,10 +19,10 @@ services:
       resources:
         limits:
           memory: 198M
-    restart_policy:
-      condition: on-failure
-      delay: 60s
-      max_attempts: 3
+      restart_policy:
+        condition: on-failure
+        delay: 60s
+        max_attempts: 3
 
   time-tracker-web:
     image: dovydasvenckus/time-tracker-web
@@ -30,3 +41,7 @@ services:
       resources:
         limits:
           memory: 32M
+
+volumes:
+  db-data:
+
