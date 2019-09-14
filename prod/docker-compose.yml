@@ -2,6 +2,8 @@ version: "3"
 services:
   time-tracker-db:
     image: postgres:11-alpine
+    depends_on:
+      - time-tracker_default
     volumes:
       - db-data:/var/lib/postgresql/data
     env_file:
