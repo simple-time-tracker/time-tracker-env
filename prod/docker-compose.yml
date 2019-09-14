@@ -38,7 +38,7 @@ services:
   time-tracker-reverse-proxy:
     image: nginx:1.15-alpine
     ports:
-      - "80:34971"
+      - "34971:80"
     volumes:
       - $PWD/../proxy/nginx.conf:/etc/nginx/nginx.conf:ro
     deploy:
