@@ -2,8 +2,6 @@ version: "3"
 services:
   time-tracker-db:
     image: postgres:11-alpine
-    depends_on:
-      - time-tracker_default
     volumes:
       - db-data:/var/lib/postgresql/data
     env_file:
@@ -38,7 +36,7 @@ services:
   time-tracker-reverse-proxy:
     image: nginx:1.15-alpine
     ports:
-      - "80:80"
+      - "80:34971"
     volumes:
       - $PWD/../proxy/nginx.conf:/etc/nginx/nginx.conf:ro
     deploy:
