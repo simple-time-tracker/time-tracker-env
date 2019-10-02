@@ -37,10 +37,10 @@ services:
   
   time-tracker-reverse-proxy:
     image: nginx:1.15-alpine
-    ports:
-      - "34971:80"
     volumes:
       - $PWD/../proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+    env_file:
+      - $PWD/../../time-tracker-reverse-proxy.env
     deploy:
       resources:
         limits:
@@ -49,3 +49,7 @@ services:
 volumes:
   db-data:
 
+networks:
+  default:
+    external:
+      name: internal-proxy
