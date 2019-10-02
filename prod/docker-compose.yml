@@ -11,7 +11,7 @@ services:
     deploy:
       resources:
          limits:
-           memory: 32M
+           memory: 64M
 
   time-tracker-api:
     image: dovydasvenckus/time-tracker-api
@@ -22,7 +22,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 198M
+          memory: 256M
       restart_policy:
         condition: on-failure
         delay: 60s
