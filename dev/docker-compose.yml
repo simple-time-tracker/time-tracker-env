@@ -1,8 +1,8 @@
 version: "3"
 services:
   time-tracker-db:
-    image: postgres
-    environment: 
+    image: postgres:11-alpine
+    environment:
       - POSTGRES_USER=time_tracker
       - POSTGRES_PASSWORD=super-secret-pass
 
@@ -16,10 +16,9 @@ services:
       - DB_DIALECT=org.hibernate.dialect.PostgreSQLDialect
       - CORS_ALLOW=
 
-
   time-tracker-web:
     image: dovydasvenckus/time-tracker-web
-  
+
   time-tracker-reverse-proxy:
     image: nginx:1.15-alpine
     ports:

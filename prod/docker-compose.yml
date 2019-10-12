@@ -10,8 +10,8 @@ services:
       - $PWD/../../time-tracker-db.env
     deploy:
       resources:
-         limits:
-           memory: 64M
+        limits:
+          memory: 32M
 
   time-tracker-api:
     image: dovydasvenckus/time-tracker-api
@@ -34,7 +34,7 @@ services:
       resources:
         limits:
           memory: 32M
-  
+
   time-tracker-reverse-proxy:
     image: nginx:1.15-alpine
     volumes:
