@@ -30,6 +30,7 @@ services:
 
   time-tracker-web:
     image: dovydasvenckus/time-tracker-web
+    env_file: $PWD/../../time-tracker-web.env
     deploy:
       resources:
         limits:
