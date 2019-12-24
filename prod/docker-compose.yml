@@ -39,7 +39,7 @@ services:
   time-tracker-reverse-proxy:
     image: nginx:1.15-alpine
     expose:
-      - "80:80"
+      - 80
     volumes:
       - $PWD/../proxy/nginx.conf:/etc/nginx/nginx.conf:ro
     env_file:
