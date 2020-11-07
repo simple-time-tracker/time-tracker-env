@@ -2,8 +2,6 @@ version: "3"
 services:
   time-tracker-db:
     image: postgres:11-alpine
-    depends_on:
-      - time-tracker_default
     ports:
       - "5432:5432"
     volumes:
